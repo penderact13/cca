@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cracked Chest Assets - Gaming Treasures Vault</title>
+    <meta name="description" content="Discover rare gaming assets and preserved digital artifacts from classic games.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Terminal background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(88, 166, 255, 0.1) 1px, transparent 0);
+            background-size: 20px 20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #21262d;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .terminal-prompt {
+            color: #58a6ff;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links a::before {
+            content: '$ ';
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .vault-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #d4af37, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .vault-subtitle {
+            font-size: 1.2rem;
+            color: #8b949e;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Treasure chest styling */
+        .treasure-chest {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 20px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .treasure-chest:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+        }
+
+        .treasure-chest::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .chest-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .chest-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .chest-subtitle {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Game collection */
+        .game-collection {
+            padding: 3rem 0;
+        }
+
+        .collection-title {
+            color: #58a6ff;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .collection-title::before {
+            content: '🎮 ';
+            margin-right: 0.5rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .game-box {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 15px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .game-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 
+                0 15px 35px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+        }
+
+        .game-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s infinite;
+            pointer-events: none;
+        }
+
+        .game-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+        }
+
+        .game-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        .game-platform {
+            font-size: 0.9rem;
+            color: #8b949e;
+            background: rgba(139, 148, 158, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 148, 158, 0.3);
+        }
+
+        .game-description {
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            color: #1e293b;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            width: 100%;
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .download-btn::before {
+            content: '⬇️ ';
+            margin-right: 0.5rem;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: #58a6ff;
+            text-decoration: none;
+            border: 1px solid #58a6ff;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            background: #58a6ff;
+            color: #0d1117;
+        }
+
+        .back-link::before {
+            content: '← ';
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid #21262d;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: #6e7681;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .game-box {
+                padding: 1.5rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+
+            .treasure-chest {
+                padding: 2rem 1.5rem;
+            }
+
+            .chest-title {
+                font-size: 1.5rem;
+            }
+
+            .chest-icon {
+                font-size: 3rem;
+            }
+
+            .vault-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #58a6ff;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="terminal-prompt">cracked-chest@assets:~$</div>
+            <ul class="nav-links">
+                <li><a href="#vault">./vault</a></li>
+                <li><a href="#games">./games</a></li>
+                <li><a href="https://penderact13.github.io" target="_blank">../home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- Back to portfolio link -->
+        <a href="https://penderact13.github.io" class="back-link">Back to Portfolio</a>
+
+        <!-- Hero section -->
+        <section id="vault" class="hero">
+            <div class="hero-content">
+                <h1 class="vault-title">Cracked Chest Assets</h1>
+                <p class="vault-subtitle">Discover rare gaming treasures and preserved digital artifacts</p>
+                
+                <div class="treasure-chest">
+                    <span class="chest-icon">📦💎</span>
+                    <h2 class="chest-title">Welcome to the Vault</h2>
+                    <p class="chest-subtitle">
+                        A curated collection of gaming assets from classic titles, preserved for the community.
+                        Explore textures, models, sounds, and more from beloved games of the past.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game collection -->
+        <section id="games" class="game-collection">
+            <h2 class="collection-title">Available Game Assets</h2>
+            
+            <div class="games-grid">
+                <!-- Worms 3D PS2 -->
+                <div class="game-box">
+                    <div class="game-header">
+                        <span class="game-icon">🪱</span>
+                        <div class="game-info">
+                            <h3>Worms 3D</h3>
+                            <span class="game-platform">PlayStation 2</span>
+                        </div>
+                    </div>
+                    <div class="game-description">
+                        Complete asset collection from the PS2 version of Worms 3D. Includes 3D models, textures, 
+                        sound effects, animations, and UI elements from this beloved tactical combat game.
+                    </div>
+                    <a href="./1.zip" class="download-btn" download>Download Assets</a>
+                </div>
+
+                <!-- Worms 4 Mayhem PC -->
+                <div class="game-box">
+                    <div class="game-header">
+                        <span class="game-icon">🪱</span>
+                        <div class="game-info">
+                            <h3>Worms 4: Mayhem</h3>
+                            <span class="game-platform">PC</span>
+                        </div>
+                    </div>
+                    <div class="game-description">
+                        Comprehensive asset archive from the PC version of Worms 4: Mayhem. Features enhanced 
+                        graphics, weapon models, environmental assets, and the complete audio library.
+                    </div>
+                    <a href="./2.zip" class="download-btn" download>Download Assets</a>
+                </div>
+            </div>
+
+            <div class="treasure-chest">
+                <span class="chest-icon">🔮✨</span>
+                <h2 class="chest-title">More Treasures Coming Soon</h2>
+                <p class="chest-subtitle">
+                    This vault is constantly growing! Check back regularly for new game asset collections.
+                    Each discovery adds to our digital preservation mission.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-text">
+            © 2025 Cracked Chest Assets - Preserving Gaming History
+        </div>
+        <div class="footer-text" style="margin-top: 0.5rem;">
+            <code>exit 0</code>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive flair
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate game boxes on scroll
+            const gameBoxes = document.querySelectorAll('.game-box');
+            const treasureChests = document.querySelectorAll('.treasure-chest');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            [...gameBoxes, ...treasureChests].forEach(box => {
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(20px)';
+                box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(box);
+            });
+
+            // Download tracking (optional)
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const gameName = this.closest('.game-box').querySelector('h3').textContent;
+                    console.log(`🎮 Starting download: ${gameName}`);
+                    
+                    // Add visual feedback
+                    this.style.background = 'linear-gradient(135deg, #3fb950, #26a641)';
+                    this.innerHTML = '⬇️ Downloading...';
+                    
+                    setTimeout(() => {
+                        this.style.background = 'linear-gradient(135deg, #d4af37, #ffd700)';
+                        this.innerHTML = '⬇️ Download Assets';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Console ASCII art
+        console.log(`
+    ╔═══════════════════════════════════════════════════════════════╗
+    ║                    CRACKED CHEST ASSETS                       ║
+    ║                   🏴‍☠️ Digital Treasure Vault 🏴‍☠️                ║
+    ╚═══════════════════════════════════════════════════════════════╝
+        `);
+    </script>
+</body>
+</html>
